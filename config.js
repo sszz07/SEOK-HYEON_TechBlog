@@ -16,6 +16,7 @@ const users = [
     username: "김석현",
     company: "weniv",
     position: "CEO",
+    img: "img/user/profile-licat.png",
   },
 ];
 
