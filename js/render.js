@@ -173,7 +173,11 @@ function createCardElement(fileInfo, index) {
     정규표현식으로 파싱된 파일정보 fileInfo를 기반으로 blog의 card 생성, index를 받는 이유는 첫번째 카드는 넓이를 크게 차지해야 하기 때문
     */
   const card = document.createElement("div");
-  
+  if (index === 0) {
+    card.classList.add(...bloglistFirstCardStyle.split(" "));
+  } else {
+    card.classList.add(...bloglistCardStyle.split(" "));
+  }
 
   if (fileInfo.thumbnail) {
     const img = document.createElement("img");
