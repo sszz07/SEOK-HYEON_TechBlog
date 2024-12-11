@@ -5,17 +5,44 @@ LiveData란 개발자가 쉽고 편리하고 안정적인 앱을 만들기 위�
 
 
 ## LiveData 탄생 배경
-LiveData가 나오기 전에는 네트워크를 통해 데이터를 가져왔고 사용자의 상호 작용으로 상태가 바뀌게 되면 
-ive data 이전에는 네트워크를 통해 데이터를 가져오거나 사요자 상호작용으로 상태가 바뀌게 되면 controller나 presenter에서 ui에 일일히 값을 넣어주는 보일러 플레이트 코드가 필요했습니다. 그런 불편함을 해결해주는게 live data이고 그러니 당연히 유지보수성도 좋아지겠죠.
+구글은 쉽고, 간결한 코드, 유지 보수성을 생각하면서 LiveData를 만들었습니다
 
+jetpack의 본질은 개발자가 쉽고 빠르고 안전한 앱을 만들기 원했습니다 간단한 예를들기 위해 LiveData와 많이 비교하는 Obserable이 있습니다 Obserable은 ReactiveX(Reactive Extensions)를 자바와 코틀린으로 구현한 Rxjava와 RxKotiln으로 만든 라이브러리 입니다 Obserable은 진입장벽이 높습니다 진입 장벽이 높은 이유는 Rxjava와 RxKotiln의 기본 함수형이 있는데  map(), filter(), reduce(), flatMap()을 공부하고 디버깅, 흐름 제어 함수도 공부 해야합니다
+밑에는 구글 공식문서에서 퍼왔습니다 LiveData가 옵저버 함수를 만들고 ui 업데이트 하는 과정인데 ui업데이트는 90% 완성입니다
 
+```java
+class NameActivity : AppCompatActivity() {
+
+    // Use the 'by viewModels()' Kotlin property delegate
+    // from the activity-ktx artifact
+    private val model: NameViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // Other code to setup the activity...
+
+        // Create the observer which updates the UI.
+        val nameObserver = Observer<String> { newName ->
+            // Update the UI, in this case, a TextView.
+            nameTextView.text = newName
+        }
+
+        // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
+        model.currentName.observe(this, nameObserver)
+    }
+}
+```
 ---  
 </br>
 
 # LiveData는 어떤 문제를 해결해주는가?
 ## LiveData 나오기전 문제점
+LiveData가 나오기 전에는 네트워크를 통해 데이터를 가져왔고 사용자의 상호 작용으로 상태가 바뀌게 되면 
+ive data 이전에는 네트워크를 통해 데이터를 가져오거나 사요자 상호작용으로 상태가 바뀌게 되면 controller나 presenter에서 ui에 일일히 값을 넣어주는 보일러 플레이트 코드가 필요했습니다. 그런 불편함을 해결해주는게 live data이고 그러니 당연히 유지보수성도 좋아지겠죠.
+
 ## LiveData 장단점
-### 생명주기를 인식하는 방법
+
 
 ---  
 </br>
