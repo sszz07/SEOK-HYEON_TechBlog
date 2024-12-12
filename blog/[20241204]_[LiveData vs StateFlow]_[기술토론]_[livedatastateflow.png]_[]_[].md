@@ -49,6 +49,7 @@ MVVM 패턴은 로직의 독립성을 강조 합니다 뷰=UI 업데이트 로�
 
 2)Observer 패턴과 Lifecyle owner를 활용한 앱 안전성
 LiveData는 데이터를 관찰 할 수 있는 데이터 홀더 클래스 입니다 그럼 어떻게 데이터를 관찰할까요? Observer 패턴을 이용해서 관찰을 합니다 Observer 패턴란 LiveData에서 데이터 업데이트 되면 Observer 객체에게 알립니다 그 다음 Observer 객체는 최신 데이터로 ui 업데이트를 하게 됩니다 그리고 Lifecyle owner로 앱의 생명주기 파악이 됩니다 LiveData가 가진 큰 장점 입니다 예를들어 백스텍에 있는 액티비티가 종료가 되어서 stop이 되었을때 Lifecyle owner로 상태 확인을 합니다 확인하게 되면 백스텍에 있는 액티비티와 충돌을 일어나지 않습니다 이유는 액티비티가 stop이 되면 자동으로 LiveData와 Observer 객체는 비활성이 됩니다 그래서 불필요한 흐름이 없어지니 메모리 효율에서도 좋게 됩니다
+
 ---  
 </br>
 
