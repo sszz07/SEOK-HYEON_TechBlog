@@ -66,7 +66,8 @@ StateFlow 알기 위해서 Flow를 먼저 알아야 합니다 Flow는 코루틴 
 
 # StateFlow는 어떤 문제를 해결해 주는가?
 ## LiveData의 한계
-
+LiveData의 한계는 안드로이드 클린 아키텍처 관점에서 보겠습니다 안드로이드 클린 아키텍처는 Presentation layer, Domain layer, Data layer로 구성이 되어 있습니다 LiveData는 UI의 상태에 집중하기 위해 만들었습니다. 값의 변화는 항상 메인 쓰레드를 통해 관리를 합니다. Data Layer에서 비동기 방식으로 데이터를 저장하고 처리하기에 메인 스레드에서 동작하는 LiveData는 맞지 않습니다. 또한 LiveData는 안드로이드 플랫폼에 속해있는 있으면 클린 아카텍처 에서는 불편 한 문제 일수 있습니다. 이유는 Domain layer에서는 플랫폼과 연관이 없는 계층 입니다. LiveData는 Presentation에 속해 있는데 클린 아키텍처 구조는 
+Presentation-> Domain 단방향으로 움직입니다. 그래서 Domain layer는 플랫폼과 관련이 없고 repository, model, usecase를 이용해서 순수 자바와 코틀린으로 작업을 하는 계층입니다. 
 
 ## StateFlow로 문제 해결 방법
 
